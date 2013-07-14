@@ -1,0 +1,38 @@
+
+# path relative to CWD where data is to be stored
+file_store: storage/
+
+# the base url for all servers, this can be 
+# overridden in each poster, putter, getter section
+host_url: &default_url http://0.0.0.0
+
+# this stuff is secret! Don't share! Put your own stuff
+# here.
+# If you want S3 storage instead of on disk, fill this
+# with relevant info and uncomment. See closet/boto_store
+#aws_bucket: 
+#aws_access_key:
+#aws_secret_key:
+
+# the cache control information we want to send
+# on retrieved things
+cache_control: 'max-age=10'
+
+# auth cookie required to POST (from clients)
+public_auth_cookie: holdem
+
+# auth cookie required to PUT (from poster to putter)
+private_auth_cookie: storem
+
+# information specific to each class of server
+poster:
+    port: 8000
+    host_url: *default_url
+
+putter:
+    port: 8001
+    host_url: *default_url
+
+getter:
+    port: 8002
+    host_url: http://localhost
